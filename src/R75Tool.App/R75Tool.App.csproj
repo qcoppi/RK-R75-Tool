@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <!-- Solo para el icono de la bandeja del sistema (NotifyIcon) -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>R75Tool.App</RootNamespace>
+    <AssemblyName>R75Tool</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- WPF-UI: controles y tema estilo Windows 11 (https://wpfui.lepo.co) -->
+    <PackageReference Include="WPF-UI" Version="4.3.0" />
+    <!-- NAudio: acceso a las sesiones de audio de Windows (volumen por aplicación) -->
+    <PackageReference Include="NAudio.Wasapi" Version="2.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\R75Tool.Core\R75Tool.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Windows Forms añade estos using automáticos, que chocan con los de WPF (Button, Application...) -->
+    <Using Remove="System.Windows.Forms" />
+    <Using Remove="System.Drawing" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Las definiciones VIA se copian junto al .exe y se leen al arrancar -->
+    <None Update="Assets\*.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

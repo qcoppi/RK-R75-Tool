@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Herramienta de diagnóstico por consola. Usa la misma librería que la app. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\R75Tool.Core\R75Tool.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Reutilizamos la definición del teclado de la app para poder dibujar el keymap en texto -->
+    <None Include="..\..\src\R75Tool.App\Assets\*.json" Link="Assets\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

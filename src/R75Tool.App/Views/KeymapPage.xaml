@@ -1,0 +1,72 @@
+<Page
+    x:Class="R75Tool.App.Views.KeymapPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:controls="clr-namespace:R75Tool.App.Controls"
+    Title="Asignación de teclas">
+
+    <StackPanel Margin="24,8,24,24">
+        <ui:TextBlock Text="Asignación de teclas" FontTypography="Title" />
+        <ui:TextBlock Margin="0,4,0,12" TextWrapping="Wrap"
+                      Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                      Text="Haz clic en una tecla del dibujo de arriba y elige su nueva función. El teclado guarda cada cambio al momento." />
+
+        <ui:InfoBar x:Name="StatusInfo" Margin="0,0,0,12" IsClosable="True" />
+
+        <StackPanel x:Name="ContentPanel">
+            <!-- ============ Capa ============ -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                <ui:TextBlock Text="Capa" VerticalAlignment="Center" Margin="0,0,12,0" FontTypography="BodyStrong" />
+                <StackPanel x:Name="LayerPanel" Orientation="Horizontal" />
+            </StackPanel>
+
+            <!-- ============ Tecla seleccionada ============ -->
+            <ui:Card Margin="0,0,0,4" Padding="16">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Border Width="64" Height="64" CornerRadius="8" Margin="0,0,16,0"
+                            Background="#1E3A4A" BorderBrush="#60CDFF" BorderThickness="2">
+                        <ui:TextBlock x:Name="SelectedLabel" FontSize="18" FontWeight="SemiBold"
+                                      HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <ui:TextBlock x:Name="SelectedTitle" FontTypography="BodyStrong" Text="Ninguna tecla seleccionada" />
+                        <ui:TextBlock x:Name="SelectedDetail" TextWrapping="Wrap"
+                                      Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                      Text="Haz clic en una tecla del dibujo de arriba." />
+                    </StackPanel>
+                    <ui:Button x:Name="UndoButton" Grid.Column="2" Content="Deshacer" IsEnabled="False"
+                               Icon="{ui:SymbolIcon ArrowUndo24}" Click="UndoButton_Click" VerticalAlignment="Center" />
+                </Grid>
+            </ui:Card>
+
+            <!-- ============ Selector de keycodes ============ -->
+            <ui:Card Margin="0,0,0,4" Padding="0">
+                <controls:KeycodePicker x:Name="Picker" Height="260" KeycodeChosen="Picker_KeycodeChosen" />
+            </ui:Card>
+
+            <!-- ============ Código manual ============ -->
+            <ui:CardControl Margin="0,0,0,12" Icon="{ui:SymbolIcon Code24}">
+                <ui:CardControl.Header>
+                    <StackPanel>
+                        <ui:TextBlock Text="Código manual" FontTypography="BodyStrong" />
+                        <ui:TextBlock Text="Para keycodes que no estén en la lista (hexadecimal, p. ej. 0x0104 = Ctrl+A)"
+                                      Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                    </StackPanel>
+                </ui:CardControl.Header>
+                <StackPanel Orientation="Horizontal">
+                    <ui:TextBox x:Name="ManualCode" Width="120" PlaceholderText="0x0000" />
+                    <ui:Button Content="Asignar" Margin="8,0,0,0" Click="ManualButton_Click" />
+                </StackPanel>
+            </ui:CardControl>
+
+            <ui:Button Content="Restaurar el keymap de fábrica" Appearance="Danger"
+                       Icon="{ui:SymbolIcon ArrowReset24}" Click="ResetButton_Click" />
+        </StackPanel>
+    </StackPanel>
+</Page>

@@ -1,0 +1,21 @@
+<UserControl
+    x:Class="R75Tool.App.Controls.KeyboardView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- El Viewbox escala el dibujo (hecho en "píxeles de diseño") al espacio disponible -->
+    <Viewbox Stretch="Uniform">
+        <Grid x:Name="Root">
+            <!-- Capa de luz: un rectángulo difuminado detrás de las teclas.
+                 Se ve por los huecos, como la retroiluminación real. -->
+            <Rectangle x:Name="Glow" RadiusX="18" RadiusY="18" Opacity="0">
+                <Rectangle.Effect>
+                    <BlurEffect Radius="28" />
+                </Rectangle.Effect>
+            </Rectangle>
+            <!-- Carcasa -->
+            <Border x:Name="Case" CornerRadius="14" Background="#E6141416" BorderBrush="#33FFFFFF" BorderThickness="1" />
+            <!-- Las teclas se añaden aquí desde el código -->
+            <Canvas x:Name="KeyCanvas" />
+        </Grid>
+    </Viewbox>
+</UserControl>

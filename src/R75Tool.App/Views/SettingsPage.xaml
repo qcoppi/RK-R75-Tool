@@ -1,0 +1,84 @@
+<Page
+    x:Class="R75Tool.App.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="Ajustes">
+
+    <StackPanel Margin="24,8,24,24">
+        <ui:TextBlock Text="Ajustes" FontTypography="Title" />
+        <ui:InfoBar x:Name="StatusInfo" Margin="0,12,0,0" IsClosable="True" />
+
+        <!-- ============ Aplicación ============ -->
+        <ui:TextBlock Text="Aplicación" FontTypography="BodyStrong" Margin="0,16,0,8" />
+
+        <ui:CardControl Margin="0,0,0,4" Icon="{ui:SymbolIcon LocalLanguage24}">
+            <ui:CardControl.Header>
+                <StackPanel>
+                    <ui:TextBlock Text="Distribución del teclado" FontTypography="BodyStrong" />
+                    <ui:TextBlock Text="Cómo se dibujan las teclas de símbolos y cómo se escriben las macros de texto"
+                                  Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                </StackPanel>
+            </ui:CardControl.Header>
+            <ComboBox x:Name="LayoutCombo" MinWidth="240" SelectionChanged="LayoutCombo_SelectionChanged">
+                <ComboBoxItem Tag="auto" x:Name="AutoLayoutItem" />
+                <ComboBoxItem Tag="es" Content="Español (España)" />
+                <ComboBoxItem Tag="en" Content="Inglés (EE. UU.)" />
+            </ComboBox>
+        </ui:CardControl>
+
+        <ui:CardControl Margin="0,0,0,4" Icon="{ui:SymbolIcon Window24}">
+            <ui:CardControl.Header>
+                <StackPanel>
+                    <ui:TextBlock Text="Al cerrar, seguir en la bandeja" FontTypography="BodyStrong" />
+                    <ui:TextBlock Text="La X esconde la ventana en vez de salir (necesario para los perfiles por programa)"
+                                  Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                </StackPanel>
+            </ui:CardControl.Header>
+            <ui:ToggleSwitch x:Name="TraySwitch" Click="TraySwitch_Click" />
+        </ui:CardControl>
+
+        <ui:CardControl Margin="0,0,0,4" Icon="{ui:SymbolIcon Power24}">
+            <ui:CardControl.Header>
+                <StackPanel>
+                    <ui:TextBlock Text="Iniciar con Windows" FontTypography="BodyStrong" />
+                    <ui:TextBlock Text="Arranca minimizada en la bandeja al iniciar sesión"
+                                  Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                </StackPanel>
+            </ui:CardControl.Header>
+            <ui:ToggleSwitch x:Name="StartupSwitch" Click="StartupSwitch_Click" />
+        </ui:CardControl>
+
+        <!-- ============ Teclado ============ -->
+        <ui:TextBlock Text="Teclado" FontTypography="BodyStrong" Margin="0,16,0,8" />
+
+        <ui:CardControl Margin="0,0,0,4" Icon="{ui:SymbolIcon ShieldCheckmark24}">
+            <ui:CardControl.Header>
+                <StackPanel>
+                    <ui:TextBlock Text="Copia de seguridad" FontTypography="BodyStrong" />
+                    <ui:TextBlock TextWrapping="Wrap"
+                                  Text="Guarda en un archivo las capas, la rueda, las macros y la iluminación, o restáuralas"
+                                  Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                </StackPanel>
+            </ui:CardControl.Header>
+            <StackPanel Orientation="Horizontal">
+                <ui:Button x:Name="ExportButton" Content="Exportar…" Icon="{ui:SymbolIcon ArrowDownload24}" Click="ExportButton_Click" />
+                <ui:Button x:Name="ImportButton" Content="Importar…" Margin="6,0,0,0" Icon="{ui:SymbolIcon ArrowUpload24}" Click="ImportButton_Click" />
+            </StackPanel>
+        </ui:CardControl>
+
+        <!-- ============ Acerca de ============ -->
+        <ui:TextBlock Text="Acerca de" FontTypography="BodyStrong" Margin="0,16,0,8" />
+
+        <ui:CardControl Margin="0,0,0,4" Icon="{ui:SymbolIcon Info24}">
+            <ui:CardControl.Header>
+                <StackPanel>
+                    <ui:TextBlock x:Name="VersionText" FontTypography="BodyStrong" />
+                    <ui:TextBlock x:Name="SettingsPathText" TextWrapping="Wrap"
+                                  Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                </StackPanel>
+            </ui:CardControl.Header>
+            <ui:Button Content="Abrir carpeta de ajustes" Icon="{ui:SymbolIcon FolderOpen24}" Click="OpenFolderButton_Click" />
+        </ui:CardControl>
+    </StackPanel>
+</Page>
