@@ -85,6 +85,10 @@ dotnet run --project tools/RkDiag -- brillo 128
 - En la bandeja la ventana se destruye (y se vuelve a crear al abrirla) para que la app ocupe solo unos MB de RAM mientras funciona en segundo plano. Solo puede haber una instancia abierta.
 - Los perfiles cambian la iluminación sin guardarla, para no desgastar la EEPROM del teclado.
 
+## Créditos
+
+Desarrollado por [qcoppi](https://github.com/qcoppi) con la ayuda de [Claude](https://claude.ai) (Anthropic) como asistente de programación.
+
 ## Licencia
 
 [MIT](LICENSE).
