@@ -483,3 +483,6 @@ $RECYCLE.BIN/
 
 # Acceso directo local a la app (ruta absoluta de este PC)
 *.lnk
+
+# Ejecutable de la Release (se sube a GitHub Releases, no al repositorio)
+publish/

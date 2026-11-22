@@ -11,6 +11,15 @@
     <Nullable>enable</Nullable>
     <RootNamespace>R75Tool.App</RootNamespace>
     <AssemblyName>R75Tool</AssemblyName>
+
+    <!-- Datos del programa (se ven en Propiedades del .exe y en Ajustes → Acerca de) -->
+    <Version>1.0.0</Version>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+    <AssemblyTitle>R75 Tool</AssemblyTitle>
+    <Product>R75 Tool</Product>
+    <Description>Configura el Royal Kludge R75 (QMK/VIA) y controla el volumen de cada programa con la rueda</Description>
+    <Authors>qcoppi</Authors>
+    <Copyright>Copyright (c) 2026 qcoppi · MIT</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,7 +45,7 @@
 
   <ItemGroup>
     <!-- Las definiciones VIA se copian junto al .exe y se leen al arrancar -->
-    <None Update="Assets\*.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Assets\*.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

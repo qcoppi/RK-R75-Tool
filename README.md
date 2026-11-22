@@ -6,6 +6,14 @@ Su función estrella: **la rueda del teclado cambia solo el volumen del programa
 
 ![Inicio](docs/inicio.png)
 
+## Descargar
+
+1. Descarga **`R75Tool.exe`** de la [última Release](https://github.com/qcoppi/RK-R75-Tool/releases/latest). Lleva todo dentro: no hay que instalar nada.
+2. Conecta el R75 **por cable** (interruptor en modo USB) y cierra el software oficial de RK.
+3. Abre `R75Tool.exe`. La primera vez Windows puede avisar con «Windows protegió tu PC» porque el programa no está firmado: pulsa **Más información → Ejecutar de todas formas**.
+
+Consejo: en **Ajustes** activa «Iniciar con Windows» para que la rueda controle el volumen de cada programa siempre.
+
 ## Funciones
 
 | Apartado | Qué hace |
@@ -60,6 +68,12 @@ Requiere el SDK de .NET 10 en Windows.
 
 ```powershell
 dotnet run --project src/R75Tool.App
+```
+
+Generar el `.exe` único de la Release (sale en `publish/`):
+
+```powershell
+dotnet publish src/R75Tool.App -p:PublishProfile=Release-win-x64
 ```
 
 Diagnóstico por consola:
